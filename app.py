@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-
+import os
 from flask import Flask
 from flask import redirect
 from flask import url_for
 from flask import request
 from flask import render_template
-import requests
 from modules.handlers import get_question
 from modules.handlers import check_answer
 
@@ -47,8 +46,10 @@ def login():
 
 
 
+port = int(os.environ.get('PORT', 5000))
+
 
 if __name__ == "__main__":
-   app.run(host="0.0.0.0", port=2224) # runs the application
+   app.run(host='0.0.0.0', port=port, debug=False) # runs the application
    # app.run(host="0.0.0.0", port=2224, debug=True) # DEBUG MODE
 
