@@ -38,8 +38,10 @@ def get_question():
         result["answers"] = result["incorrect_answers"]
         result["answers"].append(result["correct_answer"])
         random.shuffle(result["answers"])
+        
         # remove url escape code
-        result["answers"] = parser.unescape(result["answers"])
+        for answer in result["answers"]:
+          answer = parser.unescape(answer)
         
         result["question"] = parser.unescape(result["question"])
 
