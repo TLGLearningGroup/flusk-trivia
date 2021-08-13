@@ -18,25 +18,30 @@
         {% if questions | length == 0 %}
           <h4>Sorry! We can't find any questions based on your settings. Please choose again.</h4>>
           <a class="btn btn-lg btn-primary btn-block" href="/">Start again!</a>
+
+        {% else %}
+
+          {% for i in range(questions | length) %}
+
+          <h4 class="text-info">Question{{i+1}}: {{questions[i]["question"]}}</h4>
+          <br />
+          <label for="{{i}}">Your Answer: </label>
+          <select name="{{i}}" class="form-control">
+            {% for answer in questions[i]["answers"]%}
+            <option value="{{answer}}">{{answer}}</option>
+            {% endfor %}
+          </select>
+          <br />
+          <br />
+          {% endfor %}
+
+          <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Submit Answer
+          </button>
+        
         {% endif %}
 
-        {% for i in range(questions | length) %}
-
-        <h4 class="text-info">Question{{i+1}}: {{questions[i]["question"]}}</h4>
-        <br />
-        <label for="{{i}}">Your Answer: </label>
-        <select name="{{i}}" class="form-control">
-          {% for answer in questions[i]["answers"]%}
-          <option value="{{answer}}">{{answer}}</option>
-          {% endfor %}
-        </select>
-        <br />
-        <br />
-        {% endfor %}
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
-          Submit Answer
-        </button>
+        
       </form>
     </div>
 
