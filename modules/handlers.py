@@ -38,7 +38,8 @@ def get_question():
         result["answers"] = result["incorrect_answers"]
         result["answers"].append(result["correct_answer"])
         random.shuffle(result["answers"])
-        #result["question"] = parser.unescape(result["question"])
+        
+        result["question"] = parser.unescape(result["question"])
 
 
     questions_list = res_dict["results"].copy()
