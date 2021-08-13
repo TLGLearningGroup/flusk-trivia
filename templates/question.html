@@ -16,8 +16,9 @@
         <h2 class="form-signin-heading text-center">Get 60% correct answers to win the game! </h2>
 
         {% if questions | length == 0 %}
+          <h4>Sorry! We can't find any questions based on your settings. Please choose again.</h4>>
           <a class="btn btn-lg btn-primary btn-block" href="/">Start again!</a>
-        {endif}
+        {% endif %}
 
         {% for i in range(questions | length) %}
 
