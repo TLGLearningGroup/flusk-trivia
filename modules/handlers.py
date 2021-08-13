@@ -33,7 +33,6 @@ def get_question():
 
     res_dict = res.json()
 
-    print(res_dict["results"][0])
     for result in res_dict["results"]:
         result["answers"] = result["incorrect_answers"]
         result["answers"].append(result["correct_answer"])
@@ -56,10 +55,8 @@ def check_answer():
 
     total_question_count = len(questions_list)
     correct_answer_count = 0
-    print(questions_list)
     for key in request.form:
         user_answer = request.form.get(key)
-        print(f"{key}  :  {user_answer}")
 
         if user_answer == questions_list[int(key)]["correct_answer"]:
             correct_answer_count += 1
